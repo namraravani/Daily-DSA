@@ -1,20 +1,19 @@
 #include <iostream>
 using namespace std;
 
-int FindIndex(int arr[], int start, int end)
+int Findindex(int arr[], int start, int end)
 {
-    int pivot = arr[start];
+    int piviot = arr[start];
     int i = start;
     int j = end;
 
     while (i < j)
     {
-        while (arr[i] <= pivot)
+        while (arr[i] <= piviot)
         {
             i++;
         }
-
-        while (arr[j] > pivot)
+        while (arr[j] > piviot)
         {
             j--;
         }
@@ -24,7 +23,6 @@ int FindIndex(int arr[], int start, int end)
             swap(arr[i], arr[j]);
         }
     }
-
     swap(arr[start], arr[j]);
 
     return j;
@@ -34,7 +32,7 @@ void QuickSort(int arr[], int start, int end)
 {
     if (start < end)
     {
-        int Pi = FindIndex(arr, start, end);
+        int Pi = Findindex(arr, start, end);
         QuickSort(arr, start, Pi - 1);
         QuickSort(arr, Pi + 1, end);
     }
