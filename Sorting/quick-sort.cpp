@@ -1,53 +1,56 @@
-#include <bits/stdc++.h> 
+#include <iostream>
+using namespace std;
 
-int qs(vector<int> &arr,int low,int high)
+int FindIndex(int arr[], int start, int end)
 {
-    int pivot = arr[low];
+    int pivot = arr[start];
+    int i = start;
+    int j = end;
 
-    int i = low;
-    int j = high;
-
-    while(i<j)
+    while (i < j)
     {
-        while(arr[i]<=pivot && i<=high-1)
+        while (arr[i] <= pivot)
         {
             i++;
         }
 
-        while(arr[j]>pivot && j>=low+1)
+        while (arr[j] > pivot)
         {
             j--;
         }
 
-        if(i<j)
+        if (i < j)
         {
-            swap(arr[i],arr[j]);
+            swap(arr[i], arr[j]);
         }
     }
 
-    swap(arr[low],arr[j]);
+    swap(arr[start], arr[j]);
 
     return j;
 }
 
-void QuickSort(vector<int> &arr,int low,int high)
+void QuickSort(int arr[], int start, int end)
 {
-    if(low>=high)
+    if (start < end)
     {
-        return;
+        int Pi = FindIndex(arr, start, end);
+        QuickSort(arr, start, Pi - 1);
+        QuickSort(arr, Pi + 1, end);
     }
-    int partition = qs(arr,low,high);
-    QuickSort(arr,low,partition-1);
-    QuickSort(arr,partition+1,high);
-
-
-
 }
-vector<int> quickSort(vector<int> arr)
-{
-    // Write your code here.
-    
-    QuickSort(arr,0,arr.size()-1);
 
-    return arr;
+int main()
+{
+    int arr[5] = {5, 4, 3, 2, 1};
+    int start = 0;
+    int end = 4;
+
+    QuickSort(arr, start, end);
+
+    for (int i = 0; i < 5; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    return 0;
 }
