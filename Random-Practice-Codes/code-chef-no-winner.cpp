@@ -24,7 +24,7 @@ int main() {
 	    }
 	    else if(ab == 0 || ac==0 || bc ==0)
 	    {
-	        cout << "YES" <<endl;
+	        cout << "YeS" <<endl;
 	    }
 	    
 	    else
