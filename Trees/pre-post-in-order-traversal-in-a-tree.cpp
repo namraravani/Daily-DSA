@@ -73,7 +73,35 @@ void LevelOrderTraversal(node *root)
     }
 }
 
+void PreorderTraversal(node *root)
+{
+    if (root == NULL)
+        return;
 
+    cout << root->data << " ";
+    PreorderTraversal(root->left);
+    PreorderTraversal(root->right);
+}
+
+void InorderTraversal(node *root)
+{
+    if (root == NULL)
+        return;
+
+    InorderTraversal(root->left);
+    cout << root->data << " ";
+    InorderTraversal(root->right);
+}
+
+void PostorderTraversal(node *root)
+{
+    if (root == NULL)
+        return;
+
+    PostorderTraversal(root->left);
+    PostorderTraversal(root->right);
+    cout << root->data << " ";
+}
 
 int main()
 {
