@@ -30,9 +30,9 @@ node *buildTree(node *&root)
         return NULL;
     }
 
-    cout << "Insert data for the left of " << data << " ";
+    cout << "Insert data for the left of " << root->data << " ";
     root->left = buildTree(root->left);
-    cout << "Insert data for the right of " << data << " ";
+    cout << "Insert data for the right of " << root->data << " ";
     root->right = buildTree(root->right);
     return root;
 }
@@ -72,8 +72,6 @@ void LevelOrderTraversal(node *root)
         }
     }
 }
-
-
 
 int main()
 {
