@@ -1,40 +1,45 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int longestSubArray(vector<int> arr, int k)
+int longestSubArrayLength(vector<int> a, int k)
 {
     unordered_map<int, int> mpp;
     int sum = 0;
-    int maxLen = 0;
+    int maxLength = 0;
 
-    for (int i = 0; i < arr.size(); i++)
+    for (int i = 0; i < a.size(); i++)
     {
-        sum += arr[i];
-        if (sum == k)
+        int left = 0;
+        int right = 0;
+        long long sum = a[0];
+        int maxLen = 0;
+        int n = a.size();
+        while (right < n)
         {
-            maxLen = max(maxLen, i + 1);
-        }
-        int rem = sum - k;
-
-        if (mpp.find(rem) != mpp.end())
-        {
-            int len = i - mpp[rem];
-            maxLen = max(maxLen, len);
-        }
-
-        if (mpp.find(sum) == mpp.end())
-        {
-            mpp[sum] = i;
+            while (left <= right && sum > k)
+            {
+                sum -= a[left];
+                left++;
+            }
+            if (sum == k)
+            {
+                maxLen = max(maxLen, right - left + 1); 
+            }
+            right++;
+            if (right < n)
+                sum += a[right];
         }
     }
 
-    return maxLen;
+    return maxLength;
 }
 
 int main()
 {
-    vector<int> v1{10, 20, 30, 40, 50};
-    int k = 90;
-    cout << longestSubArray(v1, 90) << endl;
+    vector<int> v1{1, 2, 3, 4, 5, 1, 1, 1, 1, 1};
+    int k = 5;
+
+    cout << longestSubArrayLength(v1, k) << endl;
+
     return 0;
 }
