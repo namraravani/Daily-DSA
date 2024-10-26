@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+// set matrix to zeros
 void setZeroes(vector<vector<int>>& matrix) {
     int col0 = 1, rows = matrix.size(), cols = matrix[0].size();
 
